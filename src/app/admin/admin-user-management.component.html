@@ -1,0 +1,66 @@
+<section class="admin-panel">
+  <div class="admin-title">
+    <h2>Admin User Management</h2>
+    <p>Manage users stored in the backend database simulation.</p>
+  </div>
+
+  <div class="admin-grid">
+    <div class="admin-list">
+      <div class="panel-header">
+        <span>Current Users</span>
+        <button type="button" (click)="loadUsers()" [disabled]="loading">Refresh</button>
+      </div>
+
+      <div class="list-status" *ngIf="loading">Loading users…</div>
+      <div class="list-error" *ngIf="error">{{ error }}</div>
+
+      <table *ngIf="!loading && users.length">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.role }}</td>
+            <td class="actions">
+              <button type="button" (click)="editUser(user)">Edit</button>
+              <button type="button" class="danger" (click)="deleteUser(user.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="admin-form">
+      <div class="panel-header">
+        <span>{{ selectedUserId ? 'Update User' : 'Add New User' }}</span>
+      </div>
+      <form [formGroup]="userForm" (ngSubmit)="submitUser()">
+        <label for="id">User ID</label>
+        <input id="id" formControlName="id" [readonly]="selectedUserId" />
+
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" />
+
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" placeholder="Enter a password" />
+
+        <label for="role">Role</label>
+        <select id="role" formControlName="role">
+          <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+        </select>
+
+        <button type="submit" [disabled]="manageLoading">
+          {{ selectedUserId ? 'Update User' : 'Add User' }}
+        </button>
+        <button type="button" class="secondary" (click)="resetForm()">Reset</button>
+      </form>
+    </div>
+  </div>
+</section>

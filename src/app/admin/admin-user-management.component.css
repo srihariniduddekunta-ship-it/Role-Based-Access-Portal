@@ -1,0 +1,113 @@
+.admin-panel {
+  margin-top: 32px;
+  padding: 24px;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.admin-title h2 {
+  margin: 0 0 6px;
+}
+
+.admin-title p {
+  color: #475569;
+  margin: 0 0 18px;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+}
+
+.admin-list,
+.admin-form {
+  background: #f8fafc;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.panel-header button {
+  border: none;
+  border-radius: 999px;
+  background: #2563eb;
+  color: white;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.list-status,
+.list-error {
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.list-error {
+  color: #b91c1c;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.actions button {
+  margin-left: 8px;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.actions button:first-child {
+  background: #2563eb;
+  color: white;
+}
+
+.actions button.danger {
+  background: #dc2626;
+  color: white;
+}
+
+.admin-form label {
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: 600;
+}
+
+.admin-form input,
+.admin-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+}
+
+.admin-form button {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.admin-form button.secondary {
+  margin-left: 12px;
+  background: #94a3b8;
+  color: white;
+}

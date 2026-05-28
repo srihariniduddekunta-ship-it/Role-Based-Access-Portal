@@ -1,0 +1,26 @@
+<div class="login-shell">
+  <div class="login-card">
+    <h1>Role Based Access Portal</h1>
+    <p>Sign in to view your records and manage users if you are an admin.</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <label for="userId">User ID</label>
+      <input id="userId" formControlName="userId" placeholder="ex: alice" />
+
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" placeholder="Enter password" />
+
+      <label for="role">Role</label>
+      <select id="role" formControlName="role">
+        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+      </select>
+
+      <button type="submit" [disabled]="loading">{{ loading ? 'Signing in…' : 'Sign In' }}</button>
+    </form>
+
+    <div class="status-row" *ngIf="error">{{ error }}</div>
+    <div class="help-text">
+      Use <strong>alice/password1</strong> for General User or <strong>bob/password2</strong> for Admin.
+    </div>
+  </div>
+</div>

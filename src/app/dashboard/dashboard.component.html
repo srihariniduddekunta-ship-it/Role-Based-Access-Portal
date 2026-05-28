@@ -1,0 +1,57 @@
+<div class="dashboard-shell">
+  <header class="dashboard-header">
+    <div>
+      <h1>Welcome back, {{ user?.name }}</h1>
+      <p *ngIf="user">Role: {{ user.role }}</p>
+    </div>
+    <button class="logout-button" (click)="logout()">Logout</button>
+  </header>
+
+  <section class="summary-panel">
+    <div class="summary-card">
+      <h2>Async API experience</h2>
+      <p>Records are loaded with a simulated delay of {{ delayMs }}ms to demonstrate UI responsiveness.</p>
+    </div>
+    <div class="summary-card">
+      <h2>User details</h2>
+      <p>ID: {{ user?.id }}</p>
+      <p>Name: {{ user?.name }}</p>
+      <p>Access: {{ user?.role }}</p>
+    </div>
+  </section>
+
+  <section class="records-panel">
+    <div class="records-header">
+      <h2>Device Records</h2>
+      <button type="button" (click)="fetchRecords()" [disabled]="loading">Refresh</button>
+    </div>
+
+    <div class="records-status" *ngIf="loading">Loading records from API…</div>
+    <div class="records-error" *ngIf="error">{{ error }}</div>
+
+    <div class="records-table-wrapper" *ngIf="!loading && records.length">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Access Level</th>
+            <th>Visible To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of records">
+            <td>{{ record.title }}</td>
+            <td>{{ record.description }}</td>
+            <td>{{ record.accessLevel }}</td>
+            <td>{{ record.visibleTo }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="records-empty" *ngIf="!loading && !records.length">No records available for this user.</div>
+  </section>
+
+  <app-admin-user-management *ngIf="user?.role === 'Admin'"></app-admin-user-management>
+</div>

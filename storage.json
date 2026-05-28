@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": "alice",
+      "name": "Alice Green",
+      "password": "password1",
+      "role": "General User"
+    },
+    {
+      "id": "bob",
+      "name": "Bob Clark",
+      "password": "password2",
+      "role": "Admin"
+    }
+  ],
+  "records": [
+    {
+      "id": "r1",
+      "ownerId": "alice",
+      "title": "Device Check",
+      "description": "User-level device status details",
+      "accessLevel": "General"
+    },
+    {
+      "id": "r2",
+      "ownerId": "alice",
+      "title": "Session Summary",
+      "description": "Daily session analytics for Alice",
+      "accessLevel": "General"
+    },
+    {
+      "id": "r3",
+      "ownerId": "bob",
+      "title": "Admin Audit",
+      "description": "Administrative audit log and controls",
+      "accessLevel": "Admin"
+    }
+  ]
+}
